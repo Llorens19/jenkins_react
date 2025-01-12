@@ -36,6 +36,15 @@ pipeline {
                 }
             }
         }
+        stage('Push_Changes') {
+            steps {
+                script {
+                    // Ejecuta el script para hacer commit y push
+                    bat 'set EXECUTOR=%EXECUTOR% && set MOTIVO=%MOTIVO% && node jenkinsScripts/pushChanges.js || exit 1'
+                }
+            }
+        }
+
 
 
 
