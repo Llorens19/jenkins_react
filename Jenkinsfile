@@ -25,10 +25,18 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                     bat 'npm test -- --watchAll=false --passWithNoTests || exit 1'
+                    bat 'npm test -- --watchAll=false --passWithNoTests || exit 1'
                 }
             }
-}
+        }
+        stage('Build') {
+            steps {
+                script {
+                    bat 'npm run build || exit 1'
+                }
+            }
+        }
+
 
 
     }
