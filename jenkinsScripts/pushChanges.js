@@ -10,9 +10,6 @@ try {
     execSync('git config --global user.name "Jenkins CI"', { stdio: 'inherit' });
     execSync('git config --global user.email "jenkins@example.com"', { stdio: 'inherit' });
 
-    // Asegurarse de estar en la rama correcta
-    execSync('git checkout ci_jenkins', { stdio: 'inherit' });
-
     // Verificar si hay cambios antes de intentar hacer commit
     const status = execSync('git status --porcelain', { encoding: 'utf-8' });
     if (!status.trim()) {
@@ -22,12 +19,8 @@ try {
 
     // Agregar todos los archivos modificados
     execSync('git add .', { stdio: 'inherit' });
-
-    // Hacer commit con el mensaje dinámico
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
-
-    // Configurar el upstream y hacer push
-    execSync('git push --set-upstream origin ci_jenkins', { stdio: 'inherit' });
+    execSync('git push origin ci_jenkins', { stdio: 'inherit' });
 
     console.log('Cambios enviados al repositorio con éxito.');
 } catch (error) {
