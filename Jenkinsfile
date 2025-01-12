@@ -29,13 +29,13 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-            steps {
-                script {
-                    bat 'npm run build || exit 1'
-                }
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         script {
+        //             bat 'npm run build || exit 1'
+        //         }
+        //     }
+        // }
         stage('Push_Changes') {
             steps {
                 script {
