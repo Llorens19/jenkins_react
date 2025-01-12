@@ -1,9 +1,9 @@
 import { execSync } from 'child_process';
 
 try {
+    // Desplegar la aplicación en Vercel con confirmación automática
     console.log('Desplegando la aplicación en Vercel...');
-    // Desplegar la aplicación con el token explícito
-    execSync('vercel --prod --yes --token ' + process.env.VERCEL_TOKEN, { stdio: 'inherit' });
+    execSync('vercel --prod --yes', { stdio: 'inherit' });
     console.log('Despliegue completado con éxito.');
 } catch (error) {
     console.error('Error durante el despliegue:', error);
