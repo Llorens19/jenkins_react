@@ -9,9 +9,8 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser, // Variables globales para navegador
-        require: "readonly", // Reconoce require como global
-        module: "readonly",  // Reconoce module como global
-        jest: true           // Variables globales de Jest
+        ...globals.node,    // Variables globales para CommonJS (module, require, etc.)
+        ...globals.jest,    // Variables globales de Jest (test, expect, describe, etc.)
       },
       parserOptions: {
         ecmaVersion: "latest",
