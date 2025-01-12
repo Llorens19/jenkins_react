@@ -22,6 +22,14 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                script {
+                    bat 'npm test -- --watchAll=false || exit 1'
+                }
+            }
+}
+
 
     }
 }
