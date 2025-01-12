@@ -144,6 +144,24 @@ En esta práctica se ha configurado un pipeline en Jenkins para un proyecto Reac
 7. **Deploy to Vercel**: Se publica el proyecto en la plataforma Vercel.
 8. **Notificación**: Se envía un mensaje al bot de Telegram con los resultados de cada etapa.
 
+## Indice
+1. [Configuración del pipeline](#configuración-del-pipeline)
+2. [Creación del pipeline](#creación-del-pipeline)
+3. [Configuración del proyecto](#configuración-del-proyecto)
+4. [Trabajos](#trabajos)
+    1. [Petición de datos](#1-petición-de-datos)
+    2. [Linter](#2-linter)
+    3. [Test](#3-test)
+    4. [Build](#4-build)
+    5. [Update_Readme](#5-update_readme)
+    6. [Deploy to Vercel](#6-deploy-to-vercel)
+    7. [Notificación](#7-notificación)
+5. [Resultado ultimo test](#resultado-ultimo-test)
+
+
+
+
+
 ## Configuración del pipeline
 Para configurar el pipeline se ha creado un archivo `Jenkinsfile` en la rama `ci_jenkins` del proyecto. En este archivo se han definido las etapas del pipeline y las acciones a realizar en cada una de ellas.
 
@@ -294,4 +312,4 @@ En esta etapa se envía un mensaje al bot de Telegram con los resultados de cada
 
 ## Resultado ultimo test
 
-[![Failure](https://img.shields.io/badge/test-failure-red)](https://shields.io/)
+[![Failure](https://img.shields.io/badge/test-SUCCESS-green)](https://shields.io/)
