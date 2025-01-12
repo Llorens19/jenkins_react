@@ -53,17 +53,25 @@ pipeline {
             }
         }
     }
-    stage('Notificación') {
-        steps {
-            withCredentials([
-                string(credentialsId: 'telegram_token', variable: 'TELEGRAM_TOKEN'),
-                string(credentialsId: 'chat_id', variable: 'CHAT_ID')
-            ]) {
+        stage('Install Dependencies') {
+            steps {
                 script {
-                    bat 'set LINTER_RESULT=Success && set TEST_RESULT=Success && set BUILD_RESULT=Success && set DEPLOY_RESULT=Success && node jenkinsScripts/sendTelegramMessage.js || exit 1'
+                    bat 'npm install'
                 }
             }
         }
-    }
+
+        stage('Notificación') {
+            steps {
+                withCredentials([
+                    string(credentialsId: 'telegram_token', variable: 'TELEGRAM_TOKEN'),
+                    string(credentialsId: 'chat_id', variable: 'CHAT_ID')
+                ]) {
+                    script {
+                        bat 'set LINTER_RESULT=Success && set TEST_RESULT=Success && set BUILD_RESULT=Success && set DEPLOY_RESULT=Success && node jenkinsScripts/sendTelegramMessage.js || exit 1'
+                    }
+                }
+            }
+        }
     }
 }
