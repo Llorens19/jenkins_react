@@ -1,0 +1,13 @@
+{
+    "name": "react-ci-pipeline",
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "framework": "create-react-app"
+}
