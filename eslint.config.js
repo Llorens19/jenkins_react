@@ -8,8 +8,10 @@ export default [
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
       globals: {
-        ...globals.browser,
-        jest: true // Esto añade las variables globales de Jest
+        ...globals.browser, // Variables globales para navegador
+        require: "readonly", // Reconoce require como global
+        module: "readonly",  // Reconoce module como global
+        jest: true           // Variables globales de Jest
       },
       parserOptions: {
         ecmaVersion: "latest",
@@ -24,13 +26,13 @@ export default [
     },
     settings: {
       react: {
-        version: "detect" // Detecta automáticamente la versión de React
-      }
+        version: "detect", // Detecta automáticamente la versión de React
+      },
     },
     rules: {
       ...pluginJs.configs.recommended.rules,
       ...pluginReact.configs.flat.recommended.rules,
-      "react/react-in-jsx-scope": "off",
+      "react/react-in-jsx-scope": "off", // React no necesita ser importado en JSX desde React 17
     },
   },
 ];
