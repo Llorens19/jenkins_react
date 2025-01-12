@@ -11,5 +11,13 @@ pipeline {
                 }
             }
         }
+        stage('Linter') {
+            steps {
+                script {
+                    sh 'npm install'
+                    sh 'npx eslint src/ --max-warnings=0'
+                }
+            }
+        }
     }
 }
