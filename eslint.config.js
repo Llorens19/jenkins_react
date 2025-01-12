@@ -6,8 +6,11 @@ import pluginReact from "eslint-plugin-react";
 export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
-    languageOptions: { 
-      globals: globals.browser,
+    languageOptions: {
+      globals: {
+        ...globals.browser, // Permite funciones del navegador
+        ...globals.jest     // Añade soporte para Jest
+      },
       parserOptions: {
         ecmaFeatures: {
           jsx: true
