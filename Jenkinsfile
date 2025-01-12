@@ -4,7 +4,6 @@ pipeline {
         string(name: 'EXECUTOR', defaultValue: 'Llorens19', description: 'Nombre de la persona que ejecuta el pipeline')
         string(name: 'MOTIVO', defaultValue: 'Test', description: 'Motivo para ejecutar el pipeline')
         string(name: 'CHAT_ID', defaultValue: '1142960583', description: 'Chat ID de Telegram para notificaciones')
-        string(name: 'VERCEL_TOKEN' defaultValue: '', description: 'Token de Vercel')
     }
     stages {
         stage('Petición de datos') {
