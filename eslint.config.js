@@ -1,37 +1,33 @@
-import globals from "globals";
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
+import globals from "globals";
 
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
-      globals: {
-        ...globals.browser, // Permite funciones del navegador
-        ...globals.jest     // Añade soporte para Jest
-      },
+      globals: globals.browser,
       parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
         ecmaFeatures: {
-          jsx: true
+          jsx: true,
         },
-        ecmaVersion: 2021,
-        sourceType: "module"
-      }
+      },
+    },
+    plugins: {
+      react: pluginReact,
     },
     settings: {
       react: {
-        version: "detect"
+        version: "detect" // Detecta automáticamente la versión de React
       }
     },
-    plugins: {
-      react: pluginReact
-    },
     rules: {
-      "react/react-in-jsx-scope": "error",
-      "react/jsx-no-target-blank": ["error", { enforceDynamicLinks: "always" }]
-    }
+      ...pluginJs.configs.recommended.rules,
+      ...pluginReact.configs.flat.recommended.rules,
+      "react/react-in-jsx-scope": "off",
+    },
   },
-  pluginJs.configs.recommended,
-  pluginReact.configs.flat.recommended
 ];
