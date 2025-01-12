@@ -51,11 +51,14 @@ pipeline {
                 }
             }
             steps {
-                script {
-                    bat 'node jenkinsScripts/deployVercel.js || exit 1'
+                withCredentials([string(credentialsId: 'VERCEL_TOKEN', variable: 'VERCEL_TOKEN')]) {
+                    script {
+                        bat 'set VERCEL_TOKEN=%VERCEL_TOKEN% && node jenkinsScripts/deployVercel.js || exit 1'
+                    }
                 }
             }
         }
+
 
 
 
