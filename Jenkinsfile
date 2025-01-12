@@ -29,37 +29,21 @@ pipeline {
                 }
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         script {
-        //             bat 'npm run build || exit 1'
-        //         }
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                script {
+                    bat 'npm run build || exit 1'
+                }
+            }
+        }
         stage('Push_Changes') {
             steps {
                 script {
                     // Ejecuta el script para hacer commit y push
-                    bat 'set EXECUTOR=%EXECUTOR% && set MOTIVO=%MOTIVO% && node jenkinsScripts/pushChanges.js'
+                    bat 'set EXECUTOR=%EXECUTOR% && set MOTIVO=%MOTIVO% && node jenkinsScripts/pushChanges.js || exit 1'
                 }
             }
         }
-        stage('Deploy to Vercel') {
-            when {
-                expression {
-                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
-                }
-            }
-            steps {
-                withCredentials([string(credentialsId: 'VERCEL_TOKEN', variable: 'VERCEL_TOKEN')]) {
-                    script {
-                        bat 'set VERCEL_TOKEN=%VERCEL_TOKEN% && node jenkinsScripts/deployVercel.js || exit 1'
-                    }
-                }
-            }
-        }
-
-
 
 
 
