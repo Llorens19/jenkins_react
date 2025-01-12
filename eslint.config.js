@@ -7,7 +7,10 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        jest: true // Esto añade las variables globales de Jest
+      },
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
