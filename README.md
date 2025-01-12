@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 # Práctica Jenkins
 ---
 ## Descripción	
@@ -19,10 +13,12 @@ En esta práctica se ha configurado un pipeline en Jenkins para un proyecto Reac
 8. **Notificación**: Se envía un mensaje al bot de Telegram con los resultados de cada etapa.
 
 ## Indice
-1. [Configuración del pipeline](#configuración-del-pipeline)
-2. [Creación del pipeline](#creación-del-pipeline)
-3. [Configuración del proyecto](#configuración-del-proyecto)
-4. [Trabajos](#trabajos)
+1. [Que es Jenkins](#que-es-jenkins)
+2. [Instalación de Jenkins](#instalación-de-jenkins)
+3. [Configuración del pipeline](#configuración-del-pipeline)
+4. [Creación del pipeline](#creación-del-pipeline)
+5. [Configuración del proyecto](#configuración-del-proyecto)
+6. [Trabajos](#trabajos)
     1. [Petición de datos](#1-petición-de-datos)
     2. [Linter](#2-linter)
     3. [Test](#3-test)
@@ -30,10 +26,21 @@ En esta práctica se ha configurado un pipeline en Jenkins para un proyecto Reac
     5. [Update_Readme](#5-update_readme)
     6. [Deploy to Vercel](#6-deploy-to-vercel)
     7. [Notificación](#7-notificación)
-5. [Resultado ultimo test](#resultado-ultimo-test)
+7. [Resultado ultimo test](#resultado-ultimo-test)
 
 
 
+## Que es Jenkins
+Jenkins es un servidor de automatización de código abierto que permite la automatización de tareas repetitivas en el desarrollo de software. Jenkins es una herramienta que permite la integración continua y la entrega continua de software, lo que significa que se pueden automatizar tareas como la compilación, las pruebas y la implementación de software. 
+
+En Jenkins, las tareas se organizan en trabajos, que se pueden configurar para que se ejecuten en función de eventos específicos, como la confirmación de cambios en un repositorio de código fuente.
+
+## Instalación de Jenkins
+Para instalar Jenkins en un windows es tan sencillo como descargar el instalador de la página oficial de Jenkins y seguir los pasos que nos indica el instalador.
+
+En el proceso de instalación nos preguntará que puerto queremos utilizar, por defecto es el 8080, pero podemos cambiarlo si queremos. En mi caso he usado el puerto 8765 ya que ya tengo contenedores que utilizan el puerto 8080.
+
+Una vez instalado, abrimos un navegador y accedemos a la dirección `http://localhost:8765` y nos aparecerá la pantalla de desbloqueo de Jenkins. Para obtener la contraseña de desbloqueo, abrimos el archivo `initialAdminPassword` que se encuentra en la ruta `C:\Program Files\Jenkins\secrets` y copiamos la contraseña.
 
 
 ## Configuración del pipeline
