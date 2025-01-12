@@ -15,5 +15,12 @@ pipeline {
                 }
             }
         }
+        stage('Linter') {
+            steps {
+                script {
+                    sh 'npx eslint src/ || exit 1'
+                }
+            }
+        }
     }
 }
