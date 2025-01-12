@@ -44,6 +44,19 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Vercel') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                script {
+                    bat 'node jenkinsScripts/deployVercel.js || exit 1'
+                }
+            }
+        }
+
 
 
 
