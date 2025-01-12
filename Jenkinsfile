@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     // Ejecuta el script para hacer commit y push
-                    bat 'set EXECUTOR=%EXECUTOR% && set MOTIVO=%MOTIVO% && node jenkinsScripts/pushChanges.js || exit 1'
+                    bat 'set EXECUTOR=%EXECUTOR% && set MOTIVO=%MOTIVO% && node jenkinsScripts/pushChanges.js'
                 }
             }
         }
